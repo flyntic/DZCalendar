@@ -1,0 +1,64 @@
+.button {
+    margin-left: 20px;
+  }
+  .big {
+    font-size: xx-large;
+  }
+  .bordered {
+    outline: 3px solid skyblue;
+  }
+  label {
+    top: -1px;
+    vertical-align: bottom;
+  }
+  input[type="checkbox"] {
+    transform: scale(1.2);
+    background-color: red;
+    vertical-align: bottom;
+  }
+  
+  label.completed {
+    text-decoration: line-through;
+  }
+  
+  button.close {
+    height: 15px;
+    vertical-align: bottom;
+    box-sizing: content-box;
+  }
+  fieldset {
+    display: inline;
+  }
+  
+  header ul{
+    display: flex;  
+    list-style-type: none;
+  }
+
+  header ul li{
+    padding-right: 20px;
+  }
+  table
+  {
+    border: 1px solid;
+  }
+
+  table th
+  {
+    border:1px solid;
+  }
+ 
+  table td
+  {
+    border:1px solid;
+  }
+ td input {
+  background-color:gray;
+ }
+ td input select
+  {
+    border:1px solid;
+    background-color:red;
+    font-size: bold;
+  }
+
