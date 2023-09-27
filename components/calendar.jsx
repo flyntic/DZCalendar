@@ -1,9 +1,9 @@
 
-function Day(day,index)
-{
+function Day(day,index,_OnClick)
+{console.log(day);
   return (<td key={index}>
-          <input type="button" value={day.val} ClassName={day.select} 
-                 OnClick={()=>{ day.select=(day.select=="select")?"":"select";}}/>
+          <input type="button" value={day.val} className={day.disableday}
+                 OnClick={_OnClick}/>
           </td>);
  
 }
@@ -17,10 +17,10 @@ function WeekStr(_week) {
 }
 */
 
-export default function Calendar({Month})
+export default function Calendar({Month,_OnClick})
 {      
      return  (
       <table> 
-       {Month.map( (week,index) => <tr key={index}>{week.map((day,index)=>Day(day,index))}</tr> ) }    
+       {Month.map( (week,index) => <tr key={index}>{week.map((day,index)=>Day(day,index,_OnClick))}</tr> ) }    
       </table>);
 }

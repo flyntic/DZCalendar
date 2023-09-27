@@ -1,11 +1,14 @@
 export function week(monday, days) {
   let str = [];
   for (let i = monday; i < monday + 7; i++) {
-    let cell = String(i);
-    if (i < 1) cell = '<';
-    if (i > days) cell = '>';
-    str.push( { val: cell.padStart(2, '_'), select:"select" });
-  }
+   let cell= String(i);
+   let disableday="";
+    if ((i < 1)||(i>days))
+    { disableday="disableday";
+      cell="  ";
+    }
+    str.push( { val:cell, select:"", disableday:disableday });
+  } 
 
   return str;
 }
