@@ -1,25 +1,13 @@
 
-function week(monday, days) {
-  let str = [];
-  for (let i = monday; i < monday + 7; i++) {
-    let cell = String(i);
-    if (i < 1) cell = '<';
-    if (i > days) cell = '>';
-    str.push({val:cell.padStart(2, '_'),select:""});
-  }
-  
-  return str;
-}
-
-function Day(day)
+function Day(day,index)
 {
-  return (<td>
+  return (<td key={index}>
           <input type="button" value={day.val} ClassName={day.select} 
                  OnClick={()=>{ day.select=(day.select=="select")?"":"select";}}/>
           </td>);
  
 }
-
+/*
 function WeekStr(_week) {
    return (
    <tr>
@@ -27,12 +15,12 @@ function WeekStr(_week) {
    </tr>
    );
 }
-
+*/
 
 export default function Calendar({Month})
 {      
-     return 
-     (<table> 
-       {Month.map(week=>WeekStr(week))}    
+     return  (
+      <table> 
+       {Month.map( (week,index) => <tr key={index}>{week.map((day,index)=>Day(day,index))}</tr> ) }    
       </table>);
 }

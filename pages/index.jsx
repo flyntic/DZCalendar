@@ -6,12 +6,12 @@ export default function Home(){
   const [month,setMonth]=useState(Month(6,31)),
         [date,setDate]=useState("1");
     
-        useEffect(() => {
+   /*     useEffect(() => {
           function f() {
-           setMonth(month.map(w=>w.map(d=>{d.select=(d.value==date)?"select":" ";})));
+           month.map(week=>week.map( d =>console.log(d) ));
          }
          f();
-       }, [date,month]);
+       }, [date,month]);*/
   return (
   <>
   <h1>Выберите дату</h1>
@@ -22,3 +22,5 @@ export default function Home(){
   <Calendar Month={month} Date={date}/>
   </>);
 }
+
+//=(day.val=={date})?:" "
