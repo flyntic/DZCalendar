@@ -1,28 +1,41 @@
 import { useState,useEffect } from "react";
 import Calendar from "../components/calendar";
 import Month from "../components/month";
+import PopUpWindow from '../components/PopUpWindow';
 
-export default function Home(){
+export default function Home() {
   const [month,setMonth]=useState(Month(6,31)),
-        [date,setDate]=useState("1.1.2023"),
+        [date,setDate]=useState("2010-01-01"),
+        [open, setOpen] = useState(false),
         [day,setDay]=useState("1");
         
         useEffect(() => {
           function f() {
-            console.log(day);
-           month.map(week=>week.map( d =>d.select=({day}==d.val)?"select":"" ));
+             let d=new Date(date);
+             d.setDate(day);
+             setDate(d.toISOString().substring(10,-10));
+             month.map(week=>week.map( d =>
+               {  d.select=(day==d.val)?"select":"" }));
          }
          f();
-       }, [day,month]);
+       }, [day]);
+
   return (
   <>
-  <h1>Выберите дату</h1>
-  <input type="date" name="date"
-                    value={date}
-                    onChange={(evt)=>setDay(evt.target.date.day)}
-                /> 
-  <Calendar Month={month} Date={date} _OnClick={(evt)=>{console.log(evt.target.value);setDay(evt.target.value);}}/>
-  </>);
-}
+  <h3>Выберите дату</h3>
+  <div>
 
-//=(day.val=={date})?:" "
+  <input type="date" name="date" value={date} id="calendarid"
+                     onKeyDown={(e) => e.preventDefault()}    
+                     onClick={_ => setOpen(true)}
+                /> 
+      {open && <PopUpWindow >
+       <Calendar Month={month}  
+                 OnClick={(evt)=>{setDay(evt.target.value); setOpen(false)}}/> 
+      </PopUpWindow>}
+
+  
+  </div>
+  </>
+  );
+}
